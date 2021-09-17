@@ -1,0 +1,27 @@
+<?page title="Update Topic"?>
+<zk>
+	<window title="Update Topic" apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('uVM')@init('hns.vn.spring_crud.UpdateTopic')"
+		validationMessages="@id('vmsgs')" width="600px" vflex="1" style="margin:0px auto; background:aliceblue;">
+		<vlayout>
+			<hbox align="center" hflex="1">
+				Topic: <combobox value="@bind(uVM.topic.name)" width="400px" style="margin-left:70px;">
+					<comboitem label="Sport"/>
+					<comboitem label="Beautify"/>
+					<comboitem label="Business"/>
+					</combobox>
+			</hbox>
+			<hbox align="center" hflex="1">
+				Description: <textbox value="@bind(uVM.topic.description)" width="400px" style="margin-left:28px;"/>
+			</hbox>
+			<hbox> 
+				Status: <combobox value="@bind(uVM.topic.status)" style="margin-left:63px;">
+					<comboitem label="True"/>
+					<comboitem label="False"/>
+				</combobox>
+			</hbox>
+			
+			<button label="Update" onClick="@command('updateTopic', topic=each)" style="margin-left:250px;"/>
+		</vlayout>
+	</window>
+</zk>

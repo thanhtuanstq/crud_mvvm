@@ -1,0 +1,25 @@
+<?page title="Update Article"?>
+<zk>
+	<window title="Update Article" apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('uVM')@init('hns.vn.spring_crud.UpdateArticle')"
+		validationMessages="@id('vmsgs')" width="600px" vflex="1" style="margin:0px auto; background:aliceblue;">
+		<vlayout>
+			<hbox align="center" hflex="1">
+				Title: <textbox value="@bind(uVM.article.title)" 
+					width="400px" style="margin-left:70px;"/>
+			</hbox>
+			<hbox align="center" hflex="1">
+				Description: <textbox value="@bind(uVM.article.description)" 
+					width="400px" style="margin-left:21px;"/>
+			</hbox>
+			<hbox> 
+				Content: <textbox value="@bind(uVM.article.content)" 
+					width="400px" height="200px" style="margin-left:45px;" multiline="true">
+				</textbox>
+				
+			</hbox>
+			
+			<button label="Update" onClick="@command('updateArticle', article=each)" style="margin-left:250px;"/>
+		</vlayout>
+	</window>
+</zk>

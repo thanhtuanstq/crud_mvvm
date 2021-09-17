@@ -1,0 +1,51 @@
+<?page title="Topic"?>
+<zk>
+	<window title="Topic Manager" apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm')@init('hns.vn.spring_crud.TopicViewModel')"
+			width="1200px" vflex="1" style="margin:0px auto; background:aliceblue;">
+
+		<vlayout style="margin-center:0px">
+			<hbox align="center" hflex="1">
+				Keyword: <textbox hflex="1" placeholder="Please input keyword!" />
+				<button label="Search" onClick="@command('search')"/>
+			</hbox>
+
+			<button label="Add" href="create-topic.zul" style="margin-left:1070px"/>
+
+			<listbox model="@bind(vm.topicListModel)" mold="paging" pageSize="6"
+					 selectedItem="@bind(vm.selectedTopic)">
+				<listhead style="text-align:center">
+					<listheader label="Name" width="25%"/>
+					<listheader label="Description" width="25%"/>
+					<listheader label="Status" width="25%"/>
+					<listheader/>
+				</listhead>
+				<template name="model">
+					<listitem>	
+						<listcell>
+							<label value="@bind(each.name)" width="25%"/>
+						</listcell>
+						<listcell>
+							<label value="@bind(each.description)" width="25%"/>
+						</listcell>
+						<listcell style="text-align:center">
+							<label value="@bind(each.status)" width="25%"/>
+						</listcell>
+						<listcell>
+							<button label="View"
+									onClick="@command('viewTopic', topic=each)"/>
+						</listcell>
+						<listcell>
+							<button label="Update"
+									onClick="@command('updateTopic', topic=each)"/>
+						</listcell>
+						<listcell>
+							<button label="Delete"
+									onClick="@command('deleteTopic', topic=each)"/>
+						</listcell>
+					</listitem>
+				</template>
+			</listbox>
+		</vlayout>
+	</window>
+</zk>

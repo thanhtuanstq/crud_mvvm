@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
+
+	<persistence-unit name="myapp" transaction-type="RESOURCE_LOCAL">
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<properties>
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL57InnoDBDialect" />
+			<property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
+			<property name="hibernate.connection.username" value="root" />
+			<property name="hibernate.connection.password" value="123456" />
+			<property name="hibernate.show_sql" value="true" />
+			<!-- data store in data/db under project folder -->
+			<property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/zk_mvvm" />
+			<!-- db is not persistent to disk
+			<property name="hibernate.connection.url" value="jdbc:hsqldb:mem:data/store" /> -->
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<!-- drop table every time
+			<property name="hibernate.hbm2ddl.auto" value="create-drop" /> -->
+		</properties>
+	</persistence-unit>
+</persistence>

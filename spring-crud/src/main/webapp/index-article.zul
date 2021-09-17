@@ -1,0 +1,61 @@
+<?page title="Article"?>
+<zk>
+	<window title="Article Manager" apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm')@init('hns.vn.spring_crud.ArticleViewModel')"
+		validationMessages="@id('vmsgs')" width="1200px" vflex="1" style="margin:0px auto; background:aliceblue;">
+		<vlayout style="margin-center:0px">
+		<hbox>
+			<label>Keyword</label>
+			<label style="margin-left:435px">Topic</label>
+		</hbox>
+		
+			<hbox align="center" hflex="1" >
+				 <textbox width="500px"
+					 placeholder="Please input keyword!" />
+					<combobox
+						width="400px" placeholder="Input topic name">
+						<comboitem label="Sport"/>
+						<comboitem label="Beautify"/>
+						<comboitem label="Business"/>
+					</combobox>
+				<button label="Search"/>
+			</hbox>
+			
+			<button label="Add" href="create-article.zul" style="margin-left:1070px"/>
+			
+			<listbox model="@bind(vm.articleListModel)" mold="paging" pageSize="6">
+				<listhead style="text-align:center">
+					<listheader label="Title" width="25%"/>
+					<listheader label="Description" width="25%"/>
+					<listheader label="Topic" width="25%"/>
+					<listheader/>
+				</listhead>
+				<template name="model">
+					<listitem>	
+						<listcell>
+							<label value="@bind(each.title)" width="25%"/>
+						</listcell>
+						<listcell>
+							<label value="@bind(each.description)" width="25%"/>
+						</listcell>
+						<listcell>
+							<label width="25%"/>
+						</listcell>
+						<listcell>
+							<button label="View" 
+									onClick="@command('viewArticle', article=each)"/>
+						</listcell>
+						<listcell>
+							<button label="Update" 
+									onClick="@command('updateArticle', article=each)"/>
+						</listcell>
+						<listcell>
+							<button label="Delete" 
+									onClick="@command('deleteArticle', article=each)"/>
+						</listcell>
+					</listitem>
+				</template>
+			</listbox>
+		</vlayout>
+	</window>
+</zk>

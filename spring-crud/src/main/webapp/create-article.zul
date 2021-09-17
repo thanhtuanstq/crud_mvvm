@@ -1,0 +1,25 @@
+<?page title="CRUD_MVVM"?>
+<zk>
+	<window title="Create Article" apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm')@init('hns.vn.spring_crud.ArticleViewModel')"
+		validationMessages="@id('vmsgs')" width="600px" vflex="1" style="margin:0px auto; background:aliceblue;">
+		<vlayout>
+			<hbox align="center" hflex="1">
+				Title: <textbox value="@save(vm.title)" 
+					width="400px" style="margin-left:70px;" placeholder="Input title name"/>
+			</hbox>
+			<hbox align="center" hflex="1">
+				Description: <textbox value="@save(vm.description)" 
+					width="400px" style="margin-left:21px;" placeholder="Input description" />
+			</hbox>
+			<hbox> 
+				Content: <textbox value="@save(vm.content)" 
+					width="400px" height="200px" style="margin-left:45px;" placeholder="Input content" multiline="true">
+				</textbox>
+				
+			</hbox>
+			
+			<button label="Create" onClick="@command('addArticle')" style="margin-left:250px;"/>
+		</vlayout>
+	</window>
+</zk>

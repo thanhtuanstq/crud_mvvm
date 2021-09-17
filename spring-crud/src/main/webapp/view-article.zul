@@ -1,0 +1,23 @@
+<?page title="View Article"?>
+<zk>
+	<window id="view-article" title="View Article" apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vVM')@init('hns.vn.spring_crud.ViewArticle')"
+			action="hide: slideUp" onCancel="@command('closeThis')"
+		width="600px" vflex="1" style="margin:0px auto; background:aliceblue;">
+		<vlayout>
+			<hbox align="center" hflex="1">
+				Title: <textbox value="@bind(vVM.article.title)" width="400px" style="margin-left:70px;">
+					</textbox>
+			</hbox>
+			<hbox align="center" hflex="1">
+				Description: <textbox value="@bind(vVM.article.description)" width="400px" style="margin-left:20px;"/>
+			</hbox>
+			<hbox>
+				Content: <textbox value="@bind(vVM.article.content)" width="400px" 
+								  height="200px" style="margin-left:46px;" multiline="true">
+				</textbox>
+			</hbox>
+			<button label="Close" onClick="@command('closeThis')" style="margin-left:250px;"/>
+		</vlayout>
+	</window>
+</zk>

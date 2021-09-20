@@ -1,7 +1,7 @@
 <?page title="Article"?>
 <zk>
 	<window title="Article Manager" apply="org.zkoss.bind.BindComposer"
-		viewModel="@id('vm')@init('hns.vn.spring_crud.ArticleViewModel')"
+		viewModel="@id('vm')@init('hns.vn.spring_crud.mvvm.article.ArticleIndexVM')"
 		validationMessages="@id('vmsgs')" width="1200px" vflex="1" style="margin:0px auto; background:aliceblue;">
 		<vlayout style="margin-center:0px">
 		<hbox>
@@ -10,37 +10,41 @@
 		</hbox>
 		
 			<hbox align="center" hflex="1" >
-				 <textbox width="500px"
-					 placeholder="Please input keyword!" />
-					<combobox
-						width="400px" placeholder="Input topic name">
-						<comboitem label="Sport"/>
-						<comboitem label="Beautify"/>
-						<comboitem label="Business"/>
-					</combobox>
-				<button label="Search"/>
+				 <textbox value="@bind(vm.keyword)" width="500px"
+					 placeholder="Input keyword!" />
+					 <combobox id="cmbTopic" width="400px" placeholder="Input topic!"
+                        model="@load(vm.topicList)" selectedItem="@bind(vm.selectedTopic)">
+                        <template name="model">
+                            <comboitem label="@load(each.name)" />
+                        </template>
+                    </combobox>
+				<button label="Search" onClick="@command('searchArticle')"/>
 			</hbox>
 			
 			<button label="Add" href="create-article.zul" style="margin-left:1070px"/>
 			
 			<listbox model="@bind(vm.articleListModel)" mold="paging" pageSize="6">
 				<listhead style="text-align:center">
-					<listheader label="Title" width="25%"/>
-					<listheader label="Description" width="25%"/>
-					<listheader label="Topic" width="25%"/>
+					<listheader label="Title" width="20%"/>
+					<listheader label="Description" width="20%"/>
+					<listheader label="Topic" width="20%"/>
+					<listheader label="Publish" width="15%"/>
 					<listheader/>
 				</listhead>
 				<template name="model">
 					<listitem>	
 						<listcell>
-							<label value="@bind(each.title)" width="25%"/>
+							<label value="@bind(each.title)" width="20%"/>
 						</listcell>
 						<listcell>
-							<label value="@bind(each.description)" width="25%"/>
+							<label value="@bind(each.description)" width="20%"/>
 						</listcell>
 						<listcell>
-							<label width="25%"/>
+							<label value="@bind(each.topic.name)" width="20%"/>
 						</listcell>
+						<listcell style="text-align:center">
+                            <label value="@bind(each.publish)" width="15%"/>
+                        </listcell>
 						<listcell>
 							<button label="View" 
 									onClick="@command('viewArticle', article=each)"/>
@@ -51,7 +55,8 @@
 						</listcell>
 						<listcell>
 							<button label="Delete" 
-									onClick="@command('deleteArticle', article=each)"/>
+									onClick="@command('deleteArticle', article=each)">
+							</button>
 						</listcell>
 					</listitem>
 				</template>

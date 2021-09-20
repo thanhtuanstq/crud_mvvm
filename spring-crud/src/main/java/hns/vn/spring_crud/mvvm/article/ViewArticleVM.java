@@ -1,6 +1,7 @@
-package hns.vn.spring_crud;
+package hns.vn.spring_crud.mvvm.article;
 
 import hns.vn.spring_crud.entity.Article;
+import hns.vn.spring_crud.entity.Topic;
 import org.zkoss.bind.annotation.ContextParam;
 import org.zkoss.bind.annotation.ContextType;
 import org.zkoss.bind.annotation.Init;
@@ -10,10 +11,9 @@ import org.zkoss.zk.ui.Sessions;
 import org.zkoss.zk.ui.annotation.Command;
 
 
-public class ViewArticle {
+public class ViewArticleVM {
 
-
-	Article article;
+    Article article;
 
     public Article getArticle() {
         return article;

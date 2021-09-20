@@ -1,19 +1,19 @@
 <?page title="Topic"?>
 <zk>
 	<window title="Topic Manager" apply="org.zkoss.bind.BindComposer"
-		viewModel="@id('vm')@init('hns.vn.spring_crud.TopicViewModel')"
+		viewModel="@id('vm')@init('hns.vn.spring_crud.mvvm.topic.TopicIndexVM')"
 			width="1200px" vflex="1" style="margin:0px auto; background:aliceblue;">
 
 		<vlayout style="margin-center:0px">
 			<hbox align="center" hflex="1">
-				Keyword: <textbox hflex="1" placeholder="Please input keyword!" />
-				<button label="Search" onClick="@command('search')"/>
+
+				Keyword: <textbox value="@bind(vm.keyword)" hflex="1" placeholder="Please input keyword!" />
+				<button label="Search" onClick="@command('searchTopic')"/>
 			</hbox>
 
 			<button label="Add" href="create-topic.zul" style="margin-left:1070px"/>
 
-			<listbox model="@bind(vm.topicListModel)" mold="paging" pageSize="6"
-					 selectedItem="@bind(vm.selectedTopic)">
+			<listbox model="@bind(vm.topicListModel)" mold="paging" pageSize="6">
 				<listhead style="text-align:center">
 					<listheader label="Name" width="25%"/>
 					<listheader label="Description" width="25%"/>
@@ -40,8 +40,8 @@
 									onClick="@command('updateTopic', topic=each)"/>
 						</listcell>
 						<listcell>
-							<button label="Delete"
-									onClick="@command('deleteTopic', topic=each)"/>
+							<button label="Delete" onClick="@command('deleteTopic', topic=each)">
+                            </button>
 						</listcell>
 					</listitem>
 				</template>

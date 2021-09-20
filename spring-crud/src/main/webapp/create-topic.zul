@@ -1,16 +1,13 @@
-<?page title="CRUD_MVVM"?>
+<?page title="Create Topic"?>
 <zk>
 	<window title="Create Topic" apply="org.zkoss.bind.BindComposer"
-		viewModel="@id('vm')@init('hns.vn.spring_crud.TopicViewModel')"
+		viewModel="@id('vm')@init('hns.vn.spring_crud.mvvm.topic.TopicIndexVM')"
 		validationMessages="@id('vmsgs')" width="600px" vflex="1" style="margin:0px auto; background:aliceblue;">
 		<vlayout>
 			<hbox align="center" hflex="1">
-				Topic: <combobox value="@save(vm.name)" 
+				Topic: <textbox value="@save(vm.name)"
 					width="400px" style="margin-left:70px;" placeholder="Input topic name">
-					<comboitem label="Sport"/>
-					<comboitem label="Beautify"/>
-					<comboitem label="Business"/>
-					</combobox>
+					</textbox>
 			</hbox>
 			<hbox align="center" hflex="1">
 				Description: <textbox value="@save(vm.description)" 

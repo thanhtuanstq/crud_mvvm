@@ -1,7 +1,7 @@
 <?page title="Update Article"?>
 <zk>
 	<window title="Update Article" apply="org.zkoss.bind.BindComposer"
-		viewModel="@id('uVM')@init('hns.vn.spring_crud.UpdateArticle')"
+		viewModel="@id('uVM')@init('hns.vn.spring_crud.mvvm.article.UpdateArticleVM')"
 		validationMessages="@id('vmsgs')" width="600px" vflex="1" style="margin:0px auto; background:aliceblue;">
 		<vlayout>
 			<hbox align="center" hflex="1">
@@ -12,6 +12,22 @@
 				Description: <textbox value="@bind(uVM.article.description)" 
 					width="400px" style="margin-left:21px;"/>
 			</hbox>
+			<hbox align="center" hflex="1">
+                Topic:
+                    <combobox id="cmbTopic" value="@bind(uVM.article.topic.name)" width="400px"
+                            style="margin-left:64px;" model="@load(uVM.topicList)" selectedItem="@bind(uVM.selectedTopic)">
+                        <template name="model">
+                            <comboitem label="@load(each.name)" />
+                        </template>
+                    </combobox>
+            </hbox>
+            <hbox align="center" hflex="1">
+                Publish: <combobox value="@bind(uVM.article.publish)"
+                              width="400px" style="margin-left:48px;">
+                        <comboitem label="True"/>
+                        <comboitem label="False"/>
+                    </combobox>
+            </hbox>
 			<hbox> 
 				Content: <textbox value="@bind(uVM.article.content)" 
 					width="400px" height="200px" style="margin-left:45px;" multiline="true">

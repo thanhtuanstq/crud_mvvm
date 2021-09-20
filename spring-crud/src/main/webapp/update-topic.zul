@@ -1,7 +1,7 @@
 <?page title="Update Topic"?>
 <zk>
 	<window title="Update Topic" apply="org.zkoss.bind.BindComposer"
-		viewModel="@id('uVM')@init('hns.vn.spring_crud.UpdateTopic')"
+		viewModel="@id('uVM')@init('hns.vn.spring_crud.mvvm.topic.UpdateTopicVM')"
 		validationMessages="@id('vmsgs')" width="600px" vflex="1" style="margin:0px auto; background:aliceblue;">
 		<vlayout>
 			<hbox align="center" hflex="1">

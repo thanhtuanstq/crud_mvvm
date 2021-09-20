@@ -1,19 +1,19 @@
 <?page title="View Topic"?>
 <zk>
 	<window id="view-topic" title="View Topic" apply="org.zkoss.bind.BindComposer"
-		viewModel="@id('vVM')@init('hns.vn.spring_crud.ViewTopic')"
+		viewModel="@id('vVM')@init('hns.vn.spring_crud.mvvm.topic.ViewTopicVM')"
 			action="hide: slideUp" onCancel="@command('closeThis')"
 		width="600px" vflex="1" style="margin:0px auto; background:aliceblue;">
 		<vlayout>
 			<hbox align="center" hflex="1">
-				Topic: <textbox value="@bind(vVM.topic.name)" width="400px" style="margin-left:70px;">
+				Topic: <textbox value="@bind(vVM.topic.name)" disabled="true" width="400px" style="margin-left:70px;">
 					</textbox>
 			</hbox>
 			<hbox align="center" hflex="1">
-				Description: <textbox value="@bind(vVM.topic.description)" width="400px" style="margin-left:28px;"/>
+				Description: <textbox value="@bind(vVM.topic.description)" disabled="true" width="400px" style="margin-left:28px;"/>
 			</hbox>
 			<hbox>
-				Status: <textbox value="@bind(vVM.topic.status)" style="margin-left:63px;">
+				Status: <textbox value="@bind(vVM.topic.status)" disabled="true" style="margin-left:63px;">
 				</textbox>
 			</hbox>
 			<button label="Close" onClick="@command('closeThis')" style="margin-left:120px;"/>

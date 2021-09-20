@@ -1,4 +1,4 @@
-package hns.vn.spring_crud;
+package hns.vn.spring_crud.mvvm.topic;
 
 import hns.vn.spring_crud.entity.Topic;
 import org.zkoss.bind.annotation.ContextParam;
@@ -10,7 +10,7 @@ import org.zkoss.zk.ui.Sessions;
 import org.zkoss.zk.ui.annotation.Command;
 
 
-public class ViewTopic {
+public class ViewTopicVM {
 
 
     Topic topic;
@@ -26,7 +26,6 @@ public class ViewTopic {
     @Init
     public void init(@ContextParam(ContextType.VIEW) Component view) {
         System.out.println("============ ViewTopicVM init(...) ===========");
-       // Selectors.wireComponents(view, this, false);
         this.topic = (Topic) Sessions.getCurrent().getAttribute("viewTopic");
     }
 

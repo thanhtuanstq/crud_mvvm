@@ -1,4 +1,4 @@
-package hns.vn.spring_crud;
+package hns.vn.spring_crud.mvvm.topic;
 
 import hns.vn.spring_crud.entity.Topic;
 import hns.vn.spring_crud.services.TopicService;
@@ -13,12 +13,11 @@ import org.zkoss.zk.ui.select.annotation.VariableResolver;
 import org.zkoss.zk.ui.select.annotation.WireVariable;
 
 @VariableResolver(org.zkoss.zkplus.spring.DelegatingVariableResolver.class)
-public class UpdateTopic {
-
-    @WireVariable
-    private TopicService myService;
+public class UpdateTopicVM {
 
     Topic topic;
+    @WireVariable
+    private TopicService topicService;
 
     public Topic getTopic() {
         return topic;
@@ -36,12 +35,12 @@ public class UpdateTopic {
     }
 
     @Command
-    public void updateTopic(){
+    public void updateTopic() {
         System.out.println("============ UpdateTopicVM updateTopic(...) ===========");
         System.out.println("============ UpdateTopicVM topic = " + topic);
-        System.out.println("============ UpdateTopicVM myService = " + (myService == null));
+        System.out.println("============ UpdateTopicVM topicService = " + (topicService == null));
 
-        myService.updateTopic(topic);
+        topicService.updateTopic(topic);
 
         Executions.sendRedirect("index-topic.zul");
     }

@@ -1,25 +1,41 @@
-<?page title="CRUD_MVVM"?>
+<?page title="Create Article"?>
 <zk>
 	<window title="Create Article" apply="org.zkoss.bind.BindComposer"
-		viewModel="@id('vm')@init('hns.vn.spring_crud.ArticleViewModel')"
+		viewModel="@id('vm')@init('hns.vn.spring_crud.mvvm.article.CreateArticleVM')"
 		validationMessages="@id('vmsgs')" width="600px" vflex="1" style="margin:0px auto; background:aliceblue;">
 		<vlayout>
 			<hbox align="center" hflex="1">
-				Title: <textbox value="@save(vm.title)" 
+				Title: <textbox value="@save(vm.article.title)"
 					width="400px" style="margin-left:70px;" placeholder="Input title name"/>
 			</hbox>
 			<hbox align="center" hflex="1">
-				Description: <textbox value="@save(vm.description)" 
+				Description: <textbox value="@save(vm.article.description)"
 					width="400px" style="margin-left:21px;" placeholder="Input description" />
 			</hbox>
+			<hbox align="center" hflex="1">
+                Topic:
+                    <combobox id="cmbTopic" width="400px" style="margin-left:64px;" placeholder="Input Topic"
+                        model="@load(vm.topicList)" selectedItem="@bind(vm.selectedTopic)">
+                        <template name="model">
+                            <comboitem label="@load(each.name)" />
+                        </template>
+                    </combobox>
+            </hbox>
+            <hbox align="center" hflex="1">
+                Publish: <combobox value="@save(vm.article.publish)"
+                              width="400px" style="margin-left:48px;" placeholder="Input publish" >
+                        <comboitem label="True"/>
+                        <comboitem label="False"/>
+                    </combobox>
+            </hbox>
 			<hbox> 
-				Content: <textbox value="@save(vm.content)" 
+				Content: <textbox value="@save(vm.article.content)"
 					width="400px" height="200px" style="margin-left:45px;" placeholder="Input content" multiline="true">
 				</textbox>
 				
 			</hbox>
 			
-			<button label="Create" onClick="@command('addArticle')" style="margin-left:250px;"/>
+			<button label="Create" onClick="@command('createArticle')" style="margin-left:250px;"/>
 		</vlayout>
 	</window>
 </zk>
